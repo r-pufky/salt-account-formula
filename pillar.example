@@ -1,0 +1,30 @@
+#!yaml|gpg
+
+account:
+  users:
+    # List of users, with attributes same as state.user.present parameters.
+    present:
+      someuser:
+        shell: /bin/bash
+        home: /home/someuser
+        groups:
+          - media
+        password: |
+          -----BEGIN PGP MESSAGE-----
+          Version: GnuPG v1
+          
+          RIIY4xKjAIUWmtks1zuNtDXSgMHYhHGX5J3A2m2f/Al4AvHsc7Ag0cSDpDM3JxXv
+          
+          -----END PGP MESSAGE-----
+          # NOTE: the suggested `openssl passwd -1` creates an MD5 hash. Most
+          # modern linux distros use sha512. See:
+          # https://serverfault.com/questions/330069/how-to-create-an-sha-512-hashed-password-for-shadow
+          # for creating a sha512 hash that fits /etc/shadow formatting to be
+          # used in GPG encryption.
+  groups:
+    # List of groups, with attributes same as state.user.present parameters.
+    present:
+      media-test:
+        gid: 1111
+      devgru:
+        gid: 1112
